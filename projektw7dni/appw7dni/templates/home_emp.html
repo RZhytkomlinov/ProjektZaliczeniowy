@@ -28,6 +28,7 @@
 				<th>Ja</th>
 				<th>Dzień</th>
 				<th>Początek pracy</th>
+				<th>Budynek</th>
 			</tr>
 
 			{% for x in start %}
@@ -35,6 +36,7 @@
 					<td>{{name}}</td>
 					<td>{{x.day_of_shift}}</td>
 					<td>{{x.start_of_shift}}</td>
+					<td>{{x.building}}</td>
 				</tr>
 			{% endfor %}
 		</table>

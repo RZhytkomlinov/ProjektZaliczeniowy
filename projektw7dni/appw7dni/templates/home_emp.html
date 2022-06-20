@@ -1,0 +1,58 @@
+{%  extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="row">
+	<div class="col-md-12">
+		<hr>
+		<div class="card card-body">
+            <div class ="col-md-6">
+				<form action="" method="POST">
+					{% csrf_token %}
+					{{startform}}
+					<input type="submit" name="starttime" value="Rozpocząć pracę">
+				</form>
+			</div>
+           <div class ="col-md-6">
+				<form action="" method="POST">
+					{% csrf_token %}
+					{{endform}}
+					<input type="submit" name="endtime" value="Zakończyć pracę">
+				</form>
+			</div>
+		</div>
+	</div>
+	<div class ="col-md-6">
+		<table class="table table-sm">
+			<tr>
+				<th>Ja</th>
+				<th>Dzień</th>
+				<th>Początek pracy</th>
+			</tr>
+
+			{% for x in start %}
+				<tr>
+					<td>{{name}}</td>
+					<td>{{x.day_of_shift}}</td>
+					<td>{{x.start_of_shift}}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</div>
+	<div class ="col-md-6">
+		<table class="table table-sm">
+			<tr>
+				<th>Koniec pracy</th>
+				<th>Budynek</th>
+			</tr>
+			{% for x in end %}
+			<tr>
+				<td>{{x.end_of_shift}}</td>
+				<td>{{x.building}}</td>
+			</tr>
+			{% endfor %}
+		</table>
+	</div>
+</div>
+
+{% endblock %}

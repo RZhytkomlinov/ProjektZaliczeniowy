@@ -1,0 +1,35 @@
+{%  extends 'base.html' %}
+
+{% block content %}
+
+<br>
+
+<div class="row">
+	<div class="col-md-12">
+		<h5>Pracownicy:</h5>
+		<hr>
+		<div class="card card-body">
+			<a class="btn btn-primary  btn-sm btn-block" href="{% url 'register' %}">Nowy Pracownik</a>
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Pracownik</th>
+					<th>Pracuje od</th>
+				</tr>
+
+				{% for employee in employees %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'hour_table' employee.id %}">View</a></td>
+						<td>{{employee.name}}</td>
+						<td>{{employee.date_created}}</td>
+						<td><a class="btn btn-sm btn-info" href="{% url 'update_employee' employee.id %}">Update</a></td>
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_employee' employee.id %}">Delete</a></td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}
